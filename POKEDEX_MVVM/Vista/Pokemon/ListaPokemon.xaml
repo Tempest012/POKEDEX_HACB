@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="POKEDEX_MVVM.Vista.Pokemon.ListaPokemon"
+             NavigationPage.HasNavigationBar="False">
+    
+    <Grid RowDefinitions="60,*"
+          BackgroundColor="#F5F6F6">
+        <Label Text="POKÉDEX"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               FontSize="40"
+               FontAttributes="Bold"
+               TextColor="#FD8298"/>
+        <CollectionView BackgroundColor="#EAEDEC"
+                        Grid.Row="1"
+                        ItemsSource="{Binding ListaPokemons}"
+                        Margin="10,5,10,0"
+                        SelectionMode="Single"
+                        SelectedItem="{Binding PokemonSeleccionado}"
+                        SelectionChangedCommand="{Binding AbrirVistaModificarcommand}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="2"
+                                 HorizontalItemSpacing="10"
+                                 VerticalItemSpacing="10"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid RowDefinitions="180,80"
+                        Margin="0,0,0,0">
+                        <VisualStateManager.VisualStateGroups> <!-- -->
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="Normal" />
+                                <VisualState Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="Transparent" /> <!-- -->
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups> <!-- -->
+                        <Frame Grid.Row="1" WidthRequest="325"
+                            HorizontalOptions="Center"
+                            CornerRadius="20"
+                            Margin="0,-100,0,-40"
+                            BackgroundColor="{Binding ColorFondo}"
+                            HasShadow="False">
+                            <StackLayout Margin="0,80,0,0">
+                                <Label Text="{Binding NroOrden}"
+                                       TextColor="Black"/>
+                                <Label Text="{Binding Nombre}"
+                                       CharacterSpacing="1"
+                                       FontSize="20"
+                                       TextColor="Black"
+                                       Margin="0,-5,0,5"/>
+                                <Button Text="{Binding Poder}"
+                                        CornerRadius="30"
+                                        HorizontalOptions="Start"
+                                        TextTransform="None"
+                                        HeightRequest="40"
+                                        BackgroundColor="{Binding Colorpoder}"/>
+                            </StackLayout>
+                        </Frame>
+                        <Image Source="{Binding Icono}"
+                               Grid.Row="1"
+                               Grid.RowSpan="15"
+                               HeightRequest="180"
+                               VerticalOptions="Start"
+                               Margin="0,-185,0,0"/>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Text="+"
+                Grid.Row="1"
+                HeightRequest="100"
+                WidthRequest="100"
+                VerticalOptions="End"
+                HorizontalOptions="End"
+                CornerRadius="50"
+                Margin="15"
+                FontSize="50"
+                FontAttributes="Bold"
+                BackgroundColor="#FFD775"
+                Command="{Binding IrARegistrocommand}"/>
+    </Grid>
+</ContentPage>

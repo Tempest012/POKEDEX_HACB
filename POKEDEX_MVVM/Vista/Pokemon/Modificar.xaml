@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="POKEDEX_MVVM.Vista.Pokemon.Modificar"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="80,*"
+          BackgroundColor="#030203">
+        <StackLayout Orientation="Horizontal" 
+                     Margin="15">
+            <Image Source="https://i.ibb.co/1rQ95x2/left-arrow.png"
+                   WidthRequest="40">
+
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Volvercommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image Source="https://i.ibb.co/fMbP0Yq/Pok-mon-emblema.png"
+                   HorizontalOptions="CenterAndExpand"/>
+            <Image Source="https://i.ibb.co/6mGKQb9/ball.png"/>
+        </StackLayout>
+        <StackLayout Grid.Row="1" Margin="10">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Nombre: "
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"
+                       FontSize="18"/>
+                <Entry Placeholder="Ingrese el nombre"
+                       FontAttributes="Bold"
+                       TextColor="#ffeb72"
+                       PlaceholderColor="White"
+                       HorizontalOptions="StartAndExpand"
+                       Text="{Binding Nombre}"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Color fondo "
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"
+                       FontSize="18"/>
+                <Entry Placeholder="Ingrese el color fondo"
+                       FontAttributes="Bold"
+                       TextColor="#ffeb72"
+                       PlaceholderColor="White"
+                       TextTransform="Lowercase"
+                       HorizontalOptions="StartAndExpand"
+                       Text="{Binding ColorFondo}">
+                </Entry>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Número:"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"
+                       FontSize="18"/>
+                <Entry Placeholder="Ingrese el número del Pókemon"
+                       FontAttributes="Bold"
+                       TextColor="#ffeb72"
+                       PlaceholderColor="White"
+                       TextTransform="Lowercase"
+                       HorizontalOptions="StartAndExpand"
+                       Text="{Binding NroOrden}"
+                       MaxLength="4"
+                       Keyboard="Numeric"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Icono:"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       FontSize="18"
+                    />
+                <Entry Placeholder="Ingrese el Icono"
+                       FontAttributes="Bold"
+                       TextColor="#ffeb72"
+                       PlaceholderColor="White"
+                       TextTransform="Lowercase"
+                       HorizontalOptions="Start"
+                       Text="{Binding Icono}"
+                    />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Poder:"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"
+                       FontSize="18"/>
+                <Entry Placeholder="Ingrese el poder"
+                       FontAttributes="Bold"
+                       TextColor="#ffeb72"
+                       PlaceholderColor="White"
+                       TextTransform="Lowercase"
+                       HorizontalOptions="StartAndExpand"
+                       Text="{Binding Poder}"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Color poder: "
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"
+                       FontSize="18"/>
+                <Entry Placeholder="Ingrese el color poder"
+                       FontAttributes="Bold"
+                       TextColor="#ffeb72"
+                       PlaceholderColor="White"
+                       TextTransform="Lowercase"
+                       HorizontalOptions="StartAndExpand"
+                       Text="{Binding ColorPoder}"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+                <Image Source="https://i.ibb.co/QpYxpTz/ojo-1.png"
+                       HeightRequest="20"/>
+                <Label Text="Vista previa"
+                       FontSize="20"
+                       TextColor="White"
+                       FontAttributes="Italic"
+                       VerticalOptions="Center"
+                       />
+            </StackLayout>
+            <Grid RowDefinitions="70,80"
+                  Margin="0,80,0,0">
+                <Frame Grid.Row="2" WidthRequest="325"
+                       Grid.ColumnSpan="2"
+                       HorizontalOptions="Center"
+                       CornerRadius="15"
+                       Margin="0,-240,0,30"
+                       BackgroundColor="{Binding ColorFondo}">
+                    <StackLayout
+                        Margin="0,70,0,0">
+                        <Label Text="{Binding NroOrden}"
+                               TextColor="Black"/>
+                        <Label Text="{Binding Nombre}"
+                               CharacterSpacing="1"
+                               FontSize="20"
+                               TextColor="Black"
+                               Margin="0,-10,0,5"/>
+                        <Button Text="{Binding Poder}"
+                                CornerRadius="30"
+                                HorizontalOptions="Start"
+                                TextTransform="None"
+                                HeightRequest="40"
+                                BackgroundColor="{Binding Colorpoder}"/>
+
+                    </StackLayout>
+                </Frame>
+                <Image Source="{Binding Icono}"
+                       Grid.Row="1"
+                       Grid.RowSpan="15"
+                       Grid.ColumnSpan="2"
+                       HeightRequest="180"
+                       VerticalOptions="Start"
+                       Margin="0,-200,0,0"/>
+                <Frame HorizontalOptions="CenterAndExpand"
+                       Padding="5,0"
+                       Margin="0,-100,0,0"
+                       CornerRadius="15"
+                       HasShadow="False"
+                       Grid.Column="0"
+                       Grid.Row="15">
+
+                    <Image Source="https://i.ibb.co/pzVRwMd/checked.png"
+                           WidthRequest="80"> <!--aqui esta la imagen de check-->
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ModificarPokemoncomand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Frame>
+                <Frame HorizontalOptions="CenterAndExpand"
+                       Padding="2,0"
+                       Margin="0,-100,0,0"
+                       CornerRadius="15"
+                       HasShadow="False"
+                       Grid.Column="1"
+                       Grid.Row="15">
+
+
+                    <Image Source="https://i.ibb.co/7jscvNx/incorrect.png"
+                           WidthRequest="90"> <!--aqui esta la imagen de borrar-->
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding EliminarPokemoncomand}"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                </Frame>
+
+            </Grid>
+
+        </StackLayout>
+    </Grid>
+</ContentPage>
